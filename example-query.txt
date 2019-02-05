@@ -1,0 +1,15 @@
+SELECT driver.firstname,driver.surname FROM `jobs` INNER JOIN driver ON jobs.user_ID=driver.driver_id
+WHERE driver.license_type="Class2"
+AND jobs.startDate!="2018-02-28"
+
+
+
+SELECT driver.firstname,driver.surname FROM `jobs` INNER JOIN driver ON jobs.user_ID=driver.user_ID
+WHERE driver.license_type="Class2"
+AND jobs.startDate!="2018-02-28"
+
+//$dateQuery =	"SELECT driver.firstname,driver.surname FROM jobs INNER JOIN driver ON jobs.user_ID=driver.user_ID WHERE driver.license_type=:role AND jobs.startDate!=:startDate";
+
+
+SELECT * FROM driver WHERE driver.license_type="Class2" AND driver.user_ID NOT IN
+ ( SELECT driver.user_ID FROM jobs INNER JOIN driver on jobs.user_ID=driver.user_ID WHERE jobs.startDate="2018-03-14")
